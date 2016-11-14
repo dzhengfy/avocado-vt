@@ -802,6 +802,26 @@ class VMXML(VMXMLBase):
 
         return attr_value
 
+    def set_disk_attr(self, vm_name, target, tag, attr):
+        """
+        Set value of disk tag attributes for a given target dev.
+
+        :param vm_name: domain name
+        :param target: dev of the disk
+        :param tag: disk tag
+        :param attr: the tag attribute dict to set
+        """
+        key = ""
+        try:
+            disk = self.get_disk_all()[target]
+            if tag in ["driver", "boot", "address", "alias", "source"]:
+                for key in attr:
+                    disk.find(tag).set(key, attr[key])
+                    logging.debug("key '%s' value '%s' pair is set", key, attr[key])
+                self.xmltreefile.write()
+        except AttributeError:
+            logging.error("Fail to set attribute '%s' with value '%s'.", key, attr[key])
+
     @staticmethod
     def check_disk_exist(vm_name, disk_src, virsh_instance=base.virsh):
         """
