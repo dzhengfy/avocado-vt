@@ -1,4 +1,4 @@
-Sphinx==1.3b1
+Sphinx==3.3.0
 # inspektor (static and style checks)
 pylint==2.15.10
 inspektor==0.5.3
