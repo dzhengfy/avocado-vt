@@ -266,7 +266,7 @@ class TopologyXML(base.LibvirtXMLBase):
         """
         cell_list = []
         for cell_node in self.xmltreefile.findall('/cells/cell'):
-            if not cell_node.find('memory') and withmem:
+            if cell_node.find('memory') is None and withmem:
                 continue
             xml_str = xml_utils.ElementTree.tostring(
                 cell_node, encoding='unicode')
