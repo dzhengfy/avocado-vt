@@ -5,3 +5,4 @@ inspektor==0.5.3
 aexpect>=1.6.4
 netifaces==0.11.0
 pyenchant==3.2.2
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
